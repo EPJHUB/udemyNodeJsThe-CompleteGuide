@@ -5,8 +5,11 @@ const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const path = require('path');
 const root = require('./utils/path');
+const ExpressHandlebars = require('express-handlebars');
 
-app.set('view engine', 'pug');
+app.engine('handlebars', ExpressHandlebars());
+app.set('view engine', 'handlebars');
+// app.set('view engine', 'pug');
 app.set('views', 'views');
 
 app.use(express.static(path.join(__dirname, 'public')))

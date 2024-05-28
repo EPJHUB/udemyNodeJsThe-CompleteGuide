@@ -5,11 +5,8 @@ const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const path = require('path');
 const root = require('./utils/path');
-const ExpressHandlebars = require('express-handlebars');
 
-app.engine('handlebars', ExpressHandlebars());
-app.set('view engine', 'handlebars');
-// app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -21,8 +18,7 @@ app.use('/admin',adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res) => {
-    // res.status(404).sendFile(path.join(root, 'views', '404.html'));
-    res.status(404).render('404', {pageTitle: 'Page not found'});
+    res.status(404).render('404', {pageTitle: 'Page not found', path: '/dummy'});
 })
 
 // const server = http.createServer(app);

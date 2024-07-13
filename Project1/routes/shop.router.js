@@ -1,5 +1,5 @@
 const express = require("express");
-const { getIndex, getCart, getOrders, getCheckout, getProducts, getProduct, postCart } = require("../controllers/shop.controller");
+const { getIndex, getCart, getOrders, getCheckout, getProducts, getProduct, postCart, postCartDeleteProduct, postOrder } = require("../controllers/shop.controller");
 
 const router = express.Router();
 
@@ -15,7 +15,10 @@ router.post('/cart', postCart);
 
 router.get('/orders', getOrders);
 
-router.get('/checkout', getCheckout);
+router.post('/create-order', postOrder)
+
+router.post('/cart-delete-item', postCartDeleteProduct)
+
 
 module.exports = router;
 
